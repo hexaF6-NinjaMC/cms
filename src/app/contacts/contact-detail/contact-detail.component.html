@@ -1,0 +1,24 @@
+<div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ contact.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="{{ contact.imageUrl }}" alt="{{ contact.name }}" class="img-responsive" style="max-height: 30vh;">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 d-flex">
+      <button class="btn btn-primary dropdown-toggle">Edit</button>
+      <button class="btn btn-danger dropdown-toggle">Delete</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+      <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+    </div>
+  </div>
+</div>
