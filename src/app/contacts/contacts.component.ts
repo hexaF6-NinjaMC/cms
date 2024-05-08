@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Contact } from './contact.model';
 
 @Component({
   selector: 'cms-contacts',
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.css'
+  styleUrl: './contacts.component.css',
 })
-export class ContactsComponent {}
+export class ContactsComponent {
+  @Input() selectedContact!: Contact;
+}
