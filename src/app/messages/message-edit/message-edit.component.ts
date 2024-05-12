@@ -25,7 +25,7 @@ export class MessageEditComponent {
     const subEl: HTMLInputElement = this.subjectInputRef
       .nativeElement as HTMLInputElement;
     const subject: string = subEl.value;
-    const msgEl: HTMLInputElement = this.subjectInputRef
+    const msgEl: HTMLInputElement = this.messageInputRef
       .nativeElement as HTMLInputElement;
     const message: string = msgEl.value;
     const newMessage: Message = new Message(
@@ -40,7 +40,7 @@ export class MessageEditComponent {
   onClear() {
     const subEl: HTMLInputElement = this.subjectInputRef
       .nativeElement as HTMLInputElement;
-    const msgEl: HTMLInputElement = this.subjectInputRef
+    const msgEl: HTMLInputElement = this.messageInputRef
       .nativeElement as HTMLInputElement;
     subEl.value = '';
     msgEl.value = '';
