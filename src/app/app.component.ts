@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'cms-root',
@@ -9,7 +10,7 @@ export class AppComponent {
   @Input() ngSwitch!: string;
   title = 'cms';
 
-  selectedFeature: string = 'documents';
+  selectedFeature: string = environment.defaultLandingPage || 'documents';
 
   switchView(selectedFeature: string) {
     this.selectedFeature = selectedFeature;

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Documents } from '../documents.model';
+import { Document } from '../document.model';
 
 @Component({
   selector: 'cms-document-detail',
@@ -7,5 +7,5 @@ import { Documents } from '../documents.model';
   styleUrl: './document-detail.component.css',
 })
 export class DocumentDetailComponent {
-  @Input() document!: Documents;
+  @Input() document!: Document;
 }
