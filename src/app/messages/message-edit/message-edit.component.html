@@ -16,14 +16,16 @@
 
         <div class="col-sm-12 form-group">
           <label for="message">Message</label>
-          <input
+          <textarea
             type="text"
             id="message"
             class="form-control"
-            max="255"
-            size="120"
+            maxlength="255"
             #msgText
-          />
+          ></textarea>
+          <div class="">
+            <p>Characters remaining: <span>255</span></p>
+          </div>
         </div>
       </div>
 

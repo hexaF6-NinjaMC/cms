@@ -37,5 +37,11 @@ export class MessageItemComponent implements OnInit {
     // }
 
     this.messageSender = contact === null ? this.message.sender : contact.name;
+    this.scrollToLast();
+  }
+
+  scrollToLast() {
+    const messageList = document.querySelector('.scrollable') as HTMLElement;
+    messageList.scrollTop = messageList.scrollHeight;
   }
 }

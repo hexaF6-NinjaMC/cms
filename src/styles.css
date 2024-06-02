@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+.pointer {
+  cursor: pointer;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.pad-left-right {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.ma-1 {
+  margin: 1rem;
+}
+
+.mr-half {
+  margin-right: 0.5rem;
+}
+
+.scrollable {
+  height: 50vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.sticky-heading {
+  padding: 0.5rem;
+  z-index: 1;
+}
+
+.sticky-heading + * {
+  margin-top: 2rem;
+}
+
+.clear-pad-top {
+  padding-top: 0;
+}

@@ -2,6 +2,17 @@ import { Contact } from './contact.model';
 
 export const MOCKCONTACTS: Contact[] = [
   // individual contacts
+
+  // Testing with self contact information
+  {
+    id: '1234',
+    name: 'Aaron Testing Bechtel',
+    email: 'bechtel.aaron22@gmail.com',
+    phone: '405-802-0197',
+    imageUrl: '../../assets/images/goku-san.png',
+    group: null,
+  },
+
   // index 0
   {
     id: '1',

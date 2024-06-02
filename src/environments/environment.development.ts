@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  defaultLandingPage: 'documents',
+  defaultLandingPage: 'contacts',
   apiUrl: 'http://localhost:4200/',
 };

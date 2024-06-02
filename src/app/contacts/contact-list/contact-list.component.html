@@ -1,14 +1,35 @@
-<div class="col-xs-12">
-  <h3>Contacts</h3>
-  <button class="btn btn-success pull-right">New Contact</button>
-  <div class="col-xs-12">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Contacts</span>
+      <button class="btn btn-success pull-right">New Contact</button>
+    </div>
+  </div>
+  <div class="panel-body scrollable clear-pad-top">
     <div class="row">
       <div class="col-xs-12">
-        <cms-contact-item
-          *ngFor="let contactEl of contacts"
-          [contact]="contactEl"
-          (click)="onSelected(contactEl)"
-        ></cms-contact-item>
+        <div class="list-group-heading sticky sticky-heading">
+          <span>All Contacts</span>
+        </div>
+        <div *ngFor="let contactEl of contacts">
+          <cms-contact-item
+            *ngIf="contactEl.group == null; else contactGroupMemberItem"
+            [contact]="contactEl"
+            (click)="onSelected(contactEl)"
+          ></cms-contact-item>
+          <!-- Added template for team contact items -->
+          <ng-template #contactGroupMemberItem>
+            <div class="list-group-heading sticky sticky-heading team-name">
+              <span>{{ contactEl.name }}</span>
+            </div>
+            <cms-contact-item
+              *ngFor="let groupItem of contactEl.group"
+              [contact]="groupItem"
+              (click)="onSelected(groupItem)"
+            >
+            </cms-contact-item>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
