@@ -2,34 +2,41 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-12">
-        <h2 class="pull-left title">{{ contact.name }}</h2>
+        <h2 class="pull-left title">{{ contact?.name }}</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6 vcenter">
         <img
-          src="{{ contact.imageUrl }}"
-          alt="{{ contact.name }}"
+          src="{{ contact?.imageUrl }}"
+          alt="{{ contact?.name }}"
           class="img-responsive"
           style="max-height: 30vh"
         />
       </div>
       <div class="col-xs-6 d-flex vcenter">
-        <button class="btn btn-primary mr-half">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-primary mr-half" [routerLink]="['edit']">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
       </div>
     </div>
   </div>
   <div class="panel-body">
-    <div class="row">
-    </div>
+    <div class="row"></div>
     <div class="row">
       <div class="col-xs-12">
         <p>
-          Email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+          Email: <a href="mailto:{{ contact?.email }}">{{ contact?.email }}</a>
         </p>
         <p>
-          Phone: <a href="tel:+1{{ contact.phone.replaceAll('-', '') }}">{{ contact.phone }}</a>
+          Phone:
+          <a
+            href="tel:+1{{
+              contact ? contact.phone.replaceAll('-', '') : null
+            }}"
+            >{{ contact?.phone }}</a
+          >
         </p>
       </div>
     </div>

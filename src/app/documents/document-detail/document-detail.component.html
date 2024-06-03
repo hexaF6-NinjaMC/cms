@@ -1,11 +1,13 @@
 <div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
   <div class="panel-heading">
     <div class="row pad-all">
-      <h4 class="title margin-left-right">{{ document.name }}</h4>
+      <h4 class="title margin-left-right">{{ document?.name }}</h4>
       <div class="row pull-right margin-left-right">
-        <button class="btn btn-primary mr-half">View</button>
-        <button class="btn btn-info mr-half">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-primary mr-half" (click)="onView()">View</button>
+        <button class="btn btn-info mr-half" [routerLink]="['edit']">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
       </div>
     </div>
   </div>
@@ -14,13 +16,13 @@
       <div class="row">
         <label>Description:</label>
         <br />
-        <span class="label-value">{{ document.description }}</span>
+        <span class="label-value">{{ document?.description }}</span>
       </div>
       <br />
       <div class="row">
         <label>URL:</label>
         <br />
-        <span class="label-value">{{ document.url }}</span>
+        <span class="label-value">{{ document?.url }}</span>
       </div>
     </div>
   </div>

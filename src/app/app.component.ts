@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { environment } from './../environments/environment';
+// import { environment } from './../environments/environment';
 
 @Component({
   selector: 'cms-root',
@@ -8,11 +8,13 @@ import { environment } from './../environments/environment';
 })
 export class AppComponent {
   @Input() ngSwitch!: string;
+
+  btnScriptElement: HTMLScriptElement;
   title = 'cms';
 
-  selectedFeature: string = environment.defaultLandingPage || 'documents';
-
-  switchView(selectedFeature: string) {
-    this.selectedFeature = selectedFeature;
+  constructor() {
+    this.btnScriptElement = document.createElement('script');
+    this.btnScriptElement.src = 'assets/toggleTheme.js';
+    document.body.appendChild(this.btnScriptElement);
   }
 }

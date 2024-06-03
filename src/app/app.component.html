@@ -1,6 +1,20 @@
-<cms-header (selectedFeatureEvent)="switchView($event)"></cms-header>
-<div class="container pull-left" [ngSwitch]="selectedFeature">
-  <cms-message-list *ngSwitchCase="'messages'"></cms-message-list>
-  <cms-contacts *ngSwitchCase="'contacts'"></cms-contacts>
-  <cms-documents *ngSwitchDefault></cms-documents>
+<cms-header></cms-header>
+
+<div class="scheme-toggle">
+  <button
+    class="btn_toggle-theme"
+    data-theme-toggle
+    aria-label="Change to light theme"
+    title="Switch to light theme"
+  >
+    <img class="theme-img" />
+  </button>
+</div>
+
+<div class="container pull-left">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

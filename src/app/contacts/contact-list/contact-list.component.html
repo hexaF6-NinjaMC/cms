@@ -11,21 +11,19 @@
         <div class="list-group-heading sticky sticky-heading">
           <span>All Contacts</span>
         </div>
-        <div *ngFor="let contactEl of contacts">
+        <div *ngFor="let contact of contacts">
           <cms-contact-item
-            *ngIf="contactEl.group == null; else contactGroupMemberItem"
-            [contact]="contactEl"
-            (click)="onSelected(contactEl)"
+            *ngIf="contact.group == null; else contactGroupMemberItem"
+            [contact]="contact"
           ></cms-contact-item>
           <!-- Added template for team contact items -->
           <ng-template #contactGroupMemberItem>
             <div class="list-group-heading sticky sticky-heading team-name">
-              <span>{{ contactEl.name }}</span>
+              <span>{{ contact.name }}</span>
             </div>
             <cms-contact-item
-              *ngFor="let groupItem of contactEl.group"
+              *ngFor="let groupItem of contact.group"
               [contact]="groupItem"
-              (click)="onSelected(groupItem)"
             >
             </cms-contact-item>
           </ng-template>

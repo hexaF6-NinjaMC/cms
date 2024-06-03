@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+[data-theme="dark"]:not([src="../assets/images/day-sun.svg"]) {
+  background-color: #282626;
+}
+
+[data-theme="dark"] body,
+img {
+  filter: invert(95%) hue-rotate(180deg);
+}
+
+[data-theme="light"] body,
+:matches([src="../assets/images/night-moon.svg"]) {
+  filter: invert(15%) hue-rotate(0deg);
+  background-color: #e5e9e9;
+}
+
+[data-theme="light"] img {
+  filter: invert(15%) hue-rotate(0deg);
+}
+
+body,
+cms-root {
+  min-height: 100vh;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -40,7 +65,7 @@
 
 .sticky-heading {
   padding: 0.5rem;
-  z-index: 1;
+  z-index: 3;
 }
 
 .sticky-heading + * {
@@ -49,4 +74,21 @@
 
 .clear-pad-top {
   padding-top: 0;
+}
+
+.scheme-toggle {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn_toggle-theme {
+  padding: 0;
+  max-width: fit-content;
+  border-radius: 50%;
+  cursor: pointer;
 }
