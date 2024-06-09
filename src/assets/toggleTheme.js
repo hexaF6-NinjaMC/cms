@@ -74,7 +74,7 @@ function updateThemeOnHtmlEl({ theme }) {
 
 ////////////////////////////////////////////////////////////////
 /**
- * The crazyness
+ * The craziness
  */
 
 /**

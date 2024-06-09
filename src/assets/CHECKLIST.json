@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "tag": "con",
+      "label": "new",
+      "description": "Add new Contact form.",
+      "details": null,
+      "checked": false
+    },
+    {
+      "tag": "con",
+      "label": "edit",
+      "description": "Add edit Contact form.",
+      "details": "This may be an auto-populated form of the new Contact form.",
+      "checked": false
+    },
+    {
+      "tag": "doc",
+      "label": "new",
+      "description": "Add new Document form.",
+      "details": null,
+      "checked": false
+    },
+    {
+      "tag": "doc",
+      "label": "edit",
+      "description": "Add edit Document form.",
+      "details": "This may be an auto-populated form of the new Document form.",
+      "checked": false
+    },
+    {
+      "tag": "msg",
+      "label": "submit",
+      "description": "Add Message contacts and ID's with Auth.",
+      "details": "This is going to involve some changes in `message-edit.component.ts` file, specifically, `messageSender` and `msgId` variables.",
+      "checked": false
+    },
+    {
+      "tag": "auth",
+      "label": "",
+      "description": "Add authentication.",
+      "details": null,
+      "checked": false
+    },
+    {
+      "tag": "eat",
+      "label": "",
+      "description": "Eat and sleep!",
+      "details": null,
+      "checked": false
+    }
+  ]
+}

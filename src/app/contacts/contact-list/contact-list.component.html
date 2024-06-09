@@ -1,8 +1,10 @@
-<div class="panel panel-default">
+<div class="panel panel-default col">
   <div class="panel-heading">
     <div class="row pad-left-right">
       <span class="pull-left title">Contacts</span>
-      <button class="btn btn-success pull-right">New Contact</button>
+      <button [routerLink]="['new']" class="btn btn-success pull-right">
+        New Contact
+      </button>
     </div>
   </div>
   <div class="panel-body scrollable clear-pad-top">
@@ -24,8 +26,7 @@
             <cms-contact-item
               *ngFor="let groupItem of contact.group"
               [contact]="groupItem"
-            >
-            </cms-contact-item>
+            ></cms-contact-item>
           </ng-template>
         </div>
       </div>
