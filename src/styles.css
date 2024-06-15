@@ -115,5 +115,9 @@ textarea {
 }
 
 .m-reset {
-  margin: 0.5rem !important;
+  margin: 0 !important;
+}
+
+.mb-reset {
+  margin-bottom: 0 !important;
 }

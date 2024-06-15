@@ -1,4 +1,6 @@
 .messageHeader {
+  display: block;
+  width: fit-content;
   background-color: azure;
   border: solid thin black;
   border-radius: 10px;
@@ -7,6 +9,9 @@
 }
 
 .messageText {
+  display: block;
+  width: fit-content;
+  word-break: break-word;
   border-radius: 10px;
   padding: 5px;
   margin-top: 0.25rem;

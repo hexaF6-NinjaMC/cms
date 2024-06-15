@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default mb-reset">
   <div class="panel-body">
     <form id="document-edit">
       <div class="row">
@@ -10,6 +10,7 @@
             class="form-control"
             size="120"
             max="120"
+            autofocus
             #subject
           />
         </div>
@@ -21,10 +22,15 @@
             id="message"
             class="form-control"
             maxlength="255"
+            autocomplete="on"
+            autocomplete="sentences"
             #msgText
+            (keyup)="onKeyUp()"
           ></textarea>
           <div class="">
-            <p>Characters remaining: <span class="remaining"></span></p>
+            <p>
+              Characters remaining: <span id="remaining" #message>255</span>
+            </p>
           </div>
         </div>
       </div>

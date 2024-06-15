@@ -1,32 +1,38 @@
-await fetch('../../assets/CHECKLIST.json')
-  .then(response => response.json())
-  .then(json => {
+await fetch("../../assets/CHECKLIST.json")
+  .then((response) => response.json())
+  .then((json) => {
     const file = json;
-    console.log(file);
     const strkText = "strikethrough-";
     const ls = localStorage;
     const qs = (attribute) => document.querySelector(attribute);
     const listen = (event, checkboxElement, chkElement, attribute, lsKey) => {
       checkboxElement.addEventListener(event, () => {
+        ls.setItem(lsKey, chkElement.checked);
         if (chkElement.checked) {
-          ls.setItem(lsKey, chkElement.checked);
           qs(attribute).style.textDecoration = "line-through";
         } else {
-          ls.removeItem(lsKey);
           qs(attribute).style.textDecoration = "none";
         }
       });
     };
-    const setStrikeThrough = (chkbxEl, lsKey, attribute) => {
-      if (Boolean(ls.getItem(lsKey)) === true) {
-        chkbxEl.checked = true;
-        qs(attribute).style.textDecoration = "line-through";
+    const setStrikeThrough = (task, chkbxEl, lsKey, attribute) => {
+      if (ls.getItem(lsKey) === null) {
+        chkbxEl.checked = task.checked;
+        if (task.checked === true) {
+          qs(attribute).style.textDecoration = "line-through";
+        } else {
+          qs(attribute).style.textDecoration = "none";
+        }
+        ls.setItem(lsKey, chkbxEl.checked);
+      } else {
+        chkbxEl.checked = ls.getItem(lsKey) === "true" ? true : false;
+        qs(attribute).style.textDecoration =
+          ls.getItem(lsKey) === "true" ? "line-through" : "none";
       }
     };
 
     const todoList = qs("#todo-list");
     const tasks = file.tasks;
-    // console.log(tasks);
 
     tasks.forEach((task) => {
       const lsKey = `${strkText + task.label + task.tag}`;
@@ -40,6 +46,7 @@ await fetch('../../assets/CHECKLIST.json')
       chkbxEl.setAttribute("name", lsKey);
       chkbxEl.setAttribute("id", lsKey);
       chkbxEl.setAttribute("class", "m-reset");
+      chkbxEl.checked = task.checked === true ? true : false;
 
       const chkbxLbl = document.createElement("label");
       chkbxLbl.textContent = task.description;
@@ -69,8 +76,7 @@ await fetch('../../assets/CHECKLIST.json')
       }
 
       todoList.appendChild(liEl);
-      setStrikeThrough(chkbxEl, lsKey, attribute);
+      setStrikeThrough(task, chkbxEl, lsKey, attribute);
       listen("change", chkbxEl, chkbxEl, attribute, lsKey);
     });
-  }
-);
+  });

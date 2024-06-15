@@ -11,12 +11,17 @@ export class AppComponent {
 
   btnScriptElement: HTMLScriptElement;
   checkboxScriptElement: HTMLScriptElement;
+  remainingCharsElement: HTMLScriptElement;
   title = 'cms';
 
   constructor() {
     this.btnScriptElement = document.createElement('script');
     this.btnScriptElement.src = 'assets/toggleTheme.js';
     document.body.appendChild(this.btnScriptElement);
+
+    this.remainingCharsElement = document.createElement('script');
+    this.remainingCharsElement.src = 'assets/checkCharLength.js';
+    document.body.appendChild(this.remainingCharsElement);
 
     this.checkboxScriptElement = document.createElement('script');
     this.checkboxScriptElement.src = 'assets/toggleChecklist.js';

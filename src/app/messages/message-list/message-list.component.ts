@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Message } from '../message.model';
 import { MessageService } from '../message.service';
 
@@ -7,7 +13,9 @@ import { MessageService } from '../message.service';
   templateUrl: './message-list.component.html',
   styleUrl: './message-list.component.css',
 })
-export class MessageListComponent implements OnInit {
+export class MessageListComponent implements OnInit, AfterViewInit {
+  @ViewChild('scroll') scroll!: ElementRef;
+
   messages: Message[] = [];
 
   constructor(private messageService: MessageService) {}
@@ -17,9 +25,14 @@ export class MessageListComponent implements OnInit {
     this.messageService.messageChangedEvent.subscribe((messages: Message[]) => {
       this.messages = messages;
     });
+    // this.messageService.scrollToLast();
   }
 
   onAddMessage(message: Message) {
     this.messages.push(message);
+  }
+
+  ngAfterViewInit() {
+    this.messageService.scrollToLast();
   }
 }
