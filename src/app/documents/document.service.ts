@@ -47,7 +47,7 @@ export class DocumentService {
   getMaxId(): number {
     let maxId = 0;
     this.documents.forEach((document) => {
-      if (+document.id > maxId) maxId = +document.id;
+      if (+document.id! > maxId) maxId = +document.id!;
       // console.log('Document ID:', +document.id);
     });
     return maxId;
@@ -80,7 +80,10 @@ export class DocumentService {
     if (pos < 0) return;
 
     newDocument.id = original.id;
+    console.log(original);
+    console.log(newDocument);
     this.documents[pos] = newDocument;
     this.documentListChangedEvent.next(this.documents.slice());
+    console.log(this.documents);
   }
 }

@@ -1,6 +1,6 @@
 export class Document {
   constructor(
-    public id: number | string,
+    public id: number | string | null,
     public name: string,
     public url: string,
     public description?: string,
