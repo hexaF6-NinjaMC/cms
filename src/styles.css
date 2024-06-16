@@ -31,7 +31,7 @@ textarea {
 .todo {
   position: fixed;
   right: 1rem;
-  bottom: 5rem;
+  bottom: 7rem;
   z-index: 4;
 }
 
@@ -85,12 +85,7 @@ textarea {
 }
 
 .sticky-heading {
-  padding: 0.5rem;
   z-index: 3;
-}
-
-.sticky-heading + * {
-  margin-top: 2rem;
 }
 
 .clear-pad-top {
@@ -120,4 +115,12 @@ textarea {
 
 .mb-reset {
   margin-bottom: 0 !important;
+}
+
+.panel-m-collapse-drag {
+  margin: 2rem !important;
+}
+
+.row {
+  margin: 0 !important;
 }

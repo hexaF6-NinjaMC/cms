@@ -50,9 +50,8 @@ export class DocumentEditComponent implements OnInit {
       null,
       value.name,
       value.url,
-      value.description
+      value.description,
     );
-    console.log(newDocument);
     if (this.editMode) {
       this.documentService.updateDocument(this.originalDocument, newDocument);
     } else {

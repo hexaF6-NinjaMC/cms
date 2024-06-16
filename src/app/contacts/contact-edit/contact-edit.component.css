@@ -11,8 +11,6 @@
 }
 
 .deleteButton {
-  margin-top: 1.5rem;
-  margin-left: -1.2rem;
   width: 3.4rem;
 }
 
@@ -26,7 +24,18 @@
 }
 
 .dragMsg {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
   font-size: 2rem;
   color: darkgrey;
-  margin-left: 3rem;
+  border: 1px dashed darkgrey;
+  text-align: center;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
 }

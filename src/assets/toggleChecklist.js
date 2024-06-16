@@ -1,37 +1,37 @@
+const ls = localStorage;
+const qs = (attribute) => document.querySelector(attribute);
+const listen = (event, checkboxElement, chkElement, attribute, lsKey) => {
+  checkboxElement.addEventListener(event, () => {
+    ls.setItem(lsKey, chkElement.checked);
+    if (chkElement.checked) {
+      qs(attribute).style.textDecoration = "line-through";
+    } else {
+      qs(attribute).style.textDecoration = "none";
+    }
+  });
+};
+const setStrikeThrough = (task, chkbxEl, lsKey, attribute) => {
+  if (ls.getItem(lsKey) === null) {
+    chkbxEl.checked = task.checked;
+    if (task.checked === true) {
+      qs(attribute).style.textDecoration = "line-through";
+    } else {
+      qs(attribute).style.textDecoration = "none";
+    }
+    ls.setItem(lsKey, chkbxEl.checked);
+  } else {
+    chkbxEl.checked = ls.getItem(lsKey) === "true" ? true : false;
+    qs(attribute).style.textDecoration =
+      ls.getItem(lsKey) === "true" ? "line-through" : "none";
+  }
+};
+const todoList = qs("#todo-list");
+
 await fetch("../../assets/CHECKLIST.json")
   .then((response) => response.json())
   .then((json) => {
     const file = json;
     const strkText = "strikethrough-";
-    const ls = localStorage;
-    const qs = (attribute) => document.querySelector(attribute);
-    const listen = (event, checkboxElement, chkElement, attribute, lsKey) => {
-      checkboxElement.addEventListener(event, () => {
-        ls.setItem(lsKey, chkElement.checked);
-        if (chkElement.checked) {
-          qs(attribute).style.textDecoration = "line-through";
-        } else {
-          qs(attribute).style.textDecoration = "none";
-        }
-      });
-    };
-    const setStrikeThrough = (task, chkbxEl, lsKey, attribute) => {
-      if (ls.getItem(lsKey) === null) {
-        chkbxEl.checked = task.checked;
-        if (task.checked === true) {
-          qs(attribute).style.textDecoration = "line-through";
-        } else {
-          qs(attribute).style.textDecoration = "none";
-        }
-        ls.setItem(lsKey, chkbxEl.checked);
-      } else {
-        chkbxEl.checked = ls.getItem(lsKey) === "true" ? true : false;
-        qs(attribute).style.textDecoration =
-          ls.getItem(lsKey) === "true" ? "line-through" : "none";
-      }
-    };
-
-    const todoList = qs("#todo-list");
     const tasks = file.tasks;
 
     tasks.forEach((task) => {
@@ -80,3 +80,10 @@ await fetch("../../assets/CHECKLIST.json")
       listen("change", chkbxEl, chkbxEl, attribute, lsKey);
     });
   });
+
+const todoHeader = document.querySelector("#todo-header");
+todoList.classList.add(ls.getItem("hidden") === "true" ? "hidden" : null);
+todoHeader.addEventListener("click", () => {
+  todoList.classList.toggle("hidden");
+  ls.setItem("hidden", todoList.classList.contains("hidden"));
+});

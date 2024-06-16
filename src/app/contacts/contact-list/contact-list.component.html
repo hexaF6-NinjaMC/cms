@@ -10,24 +10,22 @@
   <div class="panel-body scrollable clear-pad-top">
     <div class="row">
       <div class="col-xs-12">
-        <div class="list-group-heading sticky sticky-heading">
-          <span>All Contacts</span>
-        </div>
-        <div *ngFor="let contact of contacts">
-          <cms-contact-item
-            *ngIf="contact.group == null; else contactGroupMemberItem"
-            [contact]="contact"
-          ></cms-contact-item>
-          <!-- Added template for team contact items -->
-          <ng-template #contactGroupMemberItem>
-            <div class="list-group-heading sticky sticky-heading team-name">
-              <span>{{ contact.name }}</span>
-            </div>
-            <cms-contact-item
-              *ngFor="let groupItem of contact.group"
-              [contact]="groupItem"
-            ></cms-contact-item>
-          </ng-template>
+        <div
+          *ngFor="let contact of contacts"
+          cdkDrop
+          cdkDropList
+          [cdkDropListData]="contact"
+          class="list-group-heading"
+        >
+          <a
+            class="list-group-item clearfix pointer"
+            [routerLink]="[contact.id]"
+            [routerLinkActive]="['active']"
+            cdkDrag
+            [cdkDragData]="contact"
+          >
+            <cms-contact-item [contact]="contact"></cms-contact-item>
+          </a>
         </div>
       </div>
     </div>

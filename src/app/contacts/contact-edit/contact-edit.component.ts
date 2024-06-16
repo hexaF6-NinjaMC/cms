@@ -6,6 +6,7 @@ import { Contact } from '../contact.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ContactService } from '../contact.service';
 import { NgForm } from '@angular/forms';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'cms-contact-edit',
@@ -15,14 +16,14 @@ import { NgForm } from '@angular/forms';
 export class ContactEditComponent implements OnInit {
   originalContact!: Contact;
   contact: Contact | undefined;
-  groupContacts: Contact[] | null = [];
+  groupContacts: Contact[] = [];
   editMode: boolean = false;
   id!: string;
 
   constructor(
     private contactService: ContactService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +38,9 @@ export class ContactEditComponent implements OnInit {
         return;
       }
       this.editMode = true;
-      this.contact = JSON.parse(JSON.stringify(this.originalContact)) as Contact;
+      this.contact = JSON.parse(
+        JSON.stringify(this.originalContact),
+      ) as Contact;
       if (this.originalContact.group !== null) {
         this.groupContacts = this.contact.group as Contact[];
       }
@@ -52,7 +55,7 @@ export class ContactEditComponent implements OnInit {
       value.email,
       value.phone,
       value.imageUrl,
-      this.groupContacts
+      this.groupContacts,
     );
     if (this.editMode) {
       this.contactService.updateContact(this.originalContact, newContact);
@@ -67,20 +70,22 @@ export class ContactEditComponent implements OnInit {
   }
 
   /* DRAG AND DROP METHODS */
-  addToGroup($event: DragEvent) {
-    const selectedContact: Contact = $event;
+  addToGroup($event: CdkDragDrop<Contact>) {
+    const selectedContact: Contact = $event.item.data;
     if (this.isInvalidContact(selectedContact)) return;
-    this.groupContacts!.push(selectedContact);
+    this.groupContacts.push(selectedContact);
   }
 
   isInvalidContact(newContact: Contact) {
     if (!newContact) return true;
     if (this.contact && newContact.id === this.contact.id) return true;
-    return this.groupContacts!.some((c) => newContact.id === c.id);
+    return this.groupContacts.some((c) =>
+      newContact ? newContact.id === c.id : false,
+    );
   }
 
   onRemoveItem(index: number) {
-    if (index < 0 || index >= this.groupContacts!.length) return;
-    this.groupContacts!.splice(index, 1);
+    if (index < 0 || index >= this.groupContacts.length) return;
+    this.groupContacts.splice(index, 1);
   }
 }

@@ -80,10 +80,7 @@ export class DocumentService {
     if (pos < 0) return;
 
     newDocument.id = original.id;
-    console.log(original);
-    console.log(newDocument);
     this.documents[pos] = newDocument;
     this.documentListChangedEvent.next(this.documents.slice());
-    console.log(this.documents);
   }
 }

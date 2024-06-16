@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 vcenter">
+      <div *ngIf="contact?.imageUrl !== ' '" class="col-xs-6 vcenter">
         <img
           src="{{ contact?.imageUrl }}"
           alt="{{ contact?.name }}"
@@ -26,18 +26,35 @@
     <div class="row"></div>
     <div class="row">
       <div class="col-xs-12">
-        <p>
-          Email: <a href="mailto:{{ contact?.email }}">{{ contact?.email }}</a>
-        </p>
-        <p>
-          Phone:
-          <a
-            href="tel:+1{{
-              contact ? contact.phone.replaceAll('-', '') : null
-            }}"
-            >{{ contact?.phone }}</a
+        <div *ngIf="(contact?.group)!.length > 0; else singleContact">
+          <span class="title">Contacts in Team:</span>
+          <div
+            *ngFor="let contact of contact?.group"
+            class="list-group-item clearfix"
           >
-        </p>
+            <cms-contact-item [contact]="contact"></cms-contact-item>
+          </div>
+        </div>
+        <ng-template #singleContact>
+          <p>
+            Email:
+            <a
+              href="mailto:{{ contact?.email }}"
+              *ngIf="contact?.email !== ' '"
+              >{{ contact?.email }}</a
+            >
+          </p>
+          <p>
+            Phone:
+            <a
+              href="tel:{{
+                contact ? contact.phone.replaceAll('-', '') : null
+              }}"
+              *ngIf="contact?.phone !== ' '"
+              >{{ contact?.phone }}</a
+            >
+          </p>
+        </ng-template>
       </div>
     </div>
   </div>

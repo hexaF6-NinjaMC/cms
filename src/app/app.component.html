@@ -14,14 +14,14 @@
 <div class="container pull-left">
   <div class="row container">
     <div class="col">
-      <router-outlet></router-outlet>
+      <router-outlet cdkDropListGroup></router-outlet>
     </div>
 
-    <div class="col-md-5" class="todo">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row pad-left-right">
-            <span class="title pull-left">To-do:</span>
+    <div class="col-md-5" class="todo dashed-outline" cdkDrag>
+      <div class="panel panel-default panel-m-collapse-drag">
+        <div class="panel-heading" id="todo-header">
+          <div class="row pad-left-right pointer">
+            <span class="title">To-do:</span>
           </div>
         </div>
         <ul class="panel-body scrollable todo-list" id="todo-list"></ul>
