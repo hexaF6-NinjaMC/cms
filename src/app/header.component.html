@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container-fluid m-reset">
     <div class="navbar-header">
       <a class="navbar-brand">WeLearn CMS</a>
     </div>
@@ -16,16 +16,22 @@
           <a [routerLink]="['contacts']">Contacts</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right link">
         <li class="dropdown" cmsDropdown>
-          <a class="dropdown-toggle" role="button">
+          <button class="dropdown-toggle btn">
             User <span class="caret"></span>
-          </a>
+          </button>
           <ul class="dropdown-menu">
-            <li class="pointer"><a class="menuitem">Login</a></li>
-            <li class="pointer"><a class="menuitem">Other</a></li>
+            <li class="pointer">
+              <a class="menuitem" [routerLink]="['/']" tabindex="0">Login</a>
+            </li>
+            <li class="pointer">
+              <a class="menuitem" [routerLink]="['/']" tabindex="0">Other</a>
+            </li>
             <li class="divider"></li>
-            <li class="pointer"><a class="menuitem">Logout</a></li>
+            <li class="pointer">
+              <a class="menuitem" [routerLink]="['/']" tabindex="0">Logout</a>
+            </li>
           </ul>
         </li>
       </ul>

@@ -17,7 +17,6 @@ export class DocumentsComponent implements OnInit {
     this.documentService.documentSelectedEvent.subscribe(
       (document: Document) => {
         this.selectedDocument = document;
-        // console.log("Document Selected: " + document.name);
       },
     );
   }

@@ -36,6 +36,20 @@
       "checked": false
     },
     {
+      "tag": "http",
+      "label": "",
+      "description": "Add HTTP CRUD requests for Services.",
+      "details": null,
+      "checked": false
+    },
+    {
+      "tag": "video",
+      "label": "firebase",
+      "description": "Demonstrate CRUD requests.",
+      "details": "Show off implementations for Firebase services of Documents, Messages, and Contacts components.",
+      "checked": false
+    },
+    {
       "tag": "auth",
       "label": "",
       "description": "Add authentication.",

@@ -19,6 +19,9 @@ export class ContactEditComponent implements OnInit {
   groupContacts: Contact[] = [];
   editMode: boolean = false;
   id!: string;
+  emailPattern: RegExp =
+    /[a-z0-9](?:(?!.*[.]{2,}))[a-z0-9_!#$%&'*+/=?^`{|}~.-]*?[a-z0-9_!#$%&'*+/=?^`{|}~]*?(?:(?<!\.))(?!\.)@[a-z0-9]+[a-z0-9]*(?:[-a-z0-9.]*?)\.[a-z]{2,}/;
+  phonePattern: RegExp = /([2-9]\d{2})(-?)([2-9]\d{2})(-?)(\d{4})/;
 
   constructor(
     private contactService: ContactService,

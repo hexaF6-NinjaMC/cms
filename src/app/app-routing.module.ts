@@ -7,11 +7,12 @@ import { DocumentDetailComponent } from './documents/document-detail/document-de
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/documents',
+    redirectTo: environment.defaultLandingPage,
     pathMatch: 'full',
   },
   {

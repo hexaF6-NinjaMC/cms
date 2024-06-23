@@ -1,17 +1,35 @@
 <div class="panel panel-default col">
   <div class="panel-heading">
     <div class="row pad-left-right">
-      <span class="pull-left title">Contacts</span>
-      <button [routerLink]="['new']" class="btn btn-success pull-right">
-        New Contact
-      </button>
+      <div class="row">
+        <span class="pull-left title">Contacts</span>
+      </div>
+      <div class="row-input-group">
+        <div class="input-group pull-left pad-left-right col-xs-7">
+          <input
+            type="search"
+            class="form-control"
+            #searchBox
+            (keyup)="search(searchBox.value)"
+            placeholder="Enter a search value..."
+            id="search"
+          />
+          <div
+            class="glyphicon glyphicon-search input-group-addon"
+            (click)="search(searchBox.value)"
+          ></div>
+        </div>
+        <button [routerLink]="['new']" class="btn btn-success pull-right">
+          New Contact
+        </button>
+      </div>
     </div>
   </div>
-  <div class="panel-body scrollable clear-pad-top">
+  <div class="panel-body scrollable">
     <div class="row">
       <div class="col-xs-12">
         <div
-          *ngFor="let contact of contacts"
+          *ngFor="let contact of contacts | contactsFilter: term"
           cdkDrop
           cdkDropList
           [cdkDropListData]="contact"

@@ -1,5 +1,16 @@
 <cms-header class="app-header"></cms-header>
 
+<div class="col-md-5" class="todo dashed-outline" cdkDrag>
+  <div class="panel panel-default panel-m-collapse-drag">
+    <div class="panel-heading" id="todo-header" tabindex="0">
+      <div class="row pad-left-right pointer">
+        <span class="title">To-do:</span>
+      </div>
+    </div>
+    <ul class="panel-body scrollable todo-list" id="todo-list"></ul>
+  </div>
+</div>
+
 <div class="scheme-toggle">
   <button
     class="btn_toggle-theme"
@@ -15,17 +26,6 @@
   <div class="row container">
     <div class="col">
       <router-outlet cdkDropListGroup></router-outlet>
-    </div>
-
-    <div class="col-md-5" class="todo dashed-outline" cdkDrag>
-      <div class="panel panel-default panel-m-collapse-drag">
-        <div class="panel-heading" id="todo-header">
-          <div class="row pad-left-right pointer">
-            <span class="title">To-do:</span>
-          </div>
-        </div>
-        <ul class="panel-body scrollable todo-list" id="todo-list"></ul>
-      </div>
     </div>
   </div>
 </div>

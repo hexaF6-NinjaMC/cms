@@ -19,8 +19,8 @@ img {
   filter: invert(15%) hue-rotate(0deg);
 }
 
-body,
-cms-root {
+html,
+body {
   min-height: 100vh;
 }
 
@@ -123,4 +123,39 @@ textarea {
 
 .row {
   margin: 0 !important;
+}
+
+.row-input-group {
+  display: block;
+  height: fit-content;
+  margin-bottom: 2rem;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav > li > button {
+  border: none !important;
+  background-color: transparent;
+}
+
+button:focus {
+  outline: 5px auto -webkit-focus-ring-color !important;
+}
+
+.navbar-collapse.collapse {
+  display: flex !important;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.navbar-collapse.collapse > :not(:last-child) {
+  position: relative;
+}
+
+.navbar-collapse.collapse > :last-child {
+  margin-left: auto;
 }

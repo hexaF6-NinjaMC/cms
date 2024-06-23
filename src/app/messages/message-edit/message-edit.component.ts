@@ -12,8 +12,7 @@ export class MessageEditComponent implements OnInit {
   @ViewChild('msgText') messageInputRef!: ElementRef;
   @ViewChild('message') messageSpanRef!: ElementRef;
 
-  currentSender: string = 'Aaron Bechtel';
-  msgId: number = 122;
+  currentSender: string = '19';
 
   constructor(private messageService: MessageService) {}
 
@@ -27,11 +26,12 @@ export class MessageEditComponent implements OnInit {
       .nativeElement as HTMLInputElement;
     const message: string = msgEl.value;
     const newMessage: Message = new Message(
-      this.msgId,
+      `${Math.floor(Math.random() * 1000) + 1}`,
       subject,
       message,
       this.currentSender,
     );
+    console.log(newMessage);
     this.messageService.addMessage(newMessage);
     this.onClear();
   }

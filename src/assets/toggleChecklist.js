@@ -87,3 +87,9 @@ todoHeader.addEventListener("click", () => {
   todoList.classList.toggle("hidden");
   ls.setItem("hidden", todoList.classList.contains("hidden"));
 });
+todoHeader.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13 || e.keyCode === 32) {
+    e.preventDefault();
+    todoHeader.click();
+  }
+});

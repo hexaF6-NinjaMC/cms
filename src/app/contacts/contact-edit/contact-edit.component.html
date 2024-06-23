@@ -33,7 +33,7 @@
             required
             #email="ngModel"
             autocomplete="email"
-            pattern="^([a-z0-9])(?:(?!.*[.]{2,}))([-a-z0-9_!#$%&'*\+\/=\?^`{|}~.]*?[-a-z0-9_!#$%&'*\+\/=\?^`{|}~]*?)(?:(?<!\.))((?!\.)@)([a-z0-9]+)[a-z0-9]*(?:[-a-z0-9.]*?)\.([a-z]{2,})$"
+            [pattern]="emailPattern"
           />
         </div>
       </div>
@@ -54,7 +54,7 @@
             size="150"
             max="255"
             #phone="ngModel"
-            pattern="^([2-9]\d{2})(\-?)([2-9]\d{2})(\-?)(\d{4})$"
+            [pattern]="phonePattern"
             autocomplete="tel"
           />
         </div>

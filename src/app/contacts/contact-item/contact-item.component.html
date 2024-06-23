@@ -7,8 +7,12 @@
     *ngIf="contact.group?.length === 0 || !contact.group"
   >
     <img
-      *ngIf="contact.imageUrl"
-      src="{{ contact.imageUrl }}"
+      *ngIf="
+        contact.imageUrl !== null &&
+        contact.imageUrl !== undefined &&
+        contact.imageUrl.trim().length > 0
+      "
+      [src]="[contact.imageUrl]"
       alt="{{ contact.name }}"
       class="img-responsive"
       style="max-height: 50px"

@@ -19,14 +19,14 @@ export class ContactDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.contact = this.contactService.getContact(
-        params['id'] as number | string,
-      );
+      this.contact = this.contactService.getContact(params['id'] as string);
     });
   }
 
   onDelete() {
-    this.contactService.deleteContact(this.contact);
-    void this.router.navigate(['../'], { relativeTo: this.route });
+    if (this.contact) {
+      this.contactService.deleteContact(this.contact);
+      void this.router.navigate(['../'], { relativeTo: this.route });
+    }
   }
 }

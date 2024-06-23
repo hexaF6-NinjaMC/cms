@@ -15,6 +15,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   contacts: Contact[] = [];
   private subscription!: Subscription;
+  term: string = '';
 
   constructor(private contactService: ContactService) {}
 
@@ -29,5 +30,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  search(searchTerm: string) {
+    this.term = searchTerm;
   }
 }

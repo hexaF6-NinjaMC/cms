@@ -13,6 +13,7 @@ export class AppComponent {
   checkboxScriptElement: HTMLScriptElement;
   remainingCharsElement: HTMLScriptElement;
   title = 'cms';
+  error: string | null = null;
 
   constructor() {
     this.btnScriptElement = document.createElement('script');
