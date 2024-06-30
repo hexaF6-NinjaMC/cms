@@ -1,3 +1,5 @@
 dist
 .eslintrc.cjs
 assets
+*.js
+*.spec.ts
