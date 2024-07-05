@@ -44,13 +44,7 @@ import { provideHttpClient } from '@angular/common/http';
     ContactEditComponent,
     ContactsFilterPipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    AppRoutingModule,
-    DragDropModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, DragDropModule],
   providers: [ContactService, provideHttpClient()],
   bootstrap: [AppComponent],
 })
