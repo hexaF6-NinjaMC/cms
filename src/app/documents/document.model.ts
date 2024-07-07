@@ -1,9 +1,11 @@
 export class Document {
+  public _id?: string;
+  public id!: string;
+
   constructor(
-    public id: number | string | null,
     public name: string,
-    public url: string,
+    public url?: string,
     public description?: string,
-    public children?: object[],
+    public children?: Document[],
   ) {}
 }

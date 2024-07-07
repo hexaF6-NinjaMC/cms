@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Message } from '../message.model';
 import { MessageService } from '../message.service';
@@ -12,8 +13,6 @@ export class MessageEditComponent implements OnInit {
   @ViewChild('msgText') messageInputRef!: ElementRef;
   @ViewChild('message') messageSpanRef!: ElementRef;
 
-  currentSender: string = '19';
-
   constructor(private messageService: MessageService) {}
 
   ngOnInit() {}
@@ -26,10 +25,9 @@ export class MessageEditComponent implements OnInit {
       .nativeElement as HTMLInputElement;
     const message: string = msgEl.value;
     const newMessage: Message = new Message(
-      `${Math.floor(Math.random() * 1000) + 1}`,
       subject,
       message,
-      this.currentSender,
+      '935f28ed-10d1-4d36-98e2-dbadfb062e79',
     );
     console.log(newMessage);
     this.messageService.addMessage(newMessage);
@@ -55,7 +53,7 @@ export class MessageEditComponent implements OnInit {
     ) as HTMLTextAreaElement;
     const msgTextCharNotif = document.querySelector(
       '#remaining',
-    ) as HTMLSpanElement;
+    ) as HTMLElement;
     const maxLength = 255;
     msgTextCharNotif.style.color = 'green';
     const remaining = maxLength - msgTextBox.value.length;

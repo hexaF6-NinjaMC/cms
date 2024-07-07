@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../message.model';
 import { ContactService } from '../../contacts/contact.service';
-// import { Contact } from '../../contacts/contact.model';
 
 @Component({
   selector: 'cms-message-item',
@@ -16,23 +15,16 @@ export class MessageItemComponent implements OnInit {
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    const contact = this.contactService.getContact(this.message.sender);
-    /**
-     * The below commented `if-else` code
-     * is the elongated example of the
-     * ternary operator below it.
-     *
-     * This allows us to use a default sender name
-     * as previously defined in
-     * `message-edit.component.ts`.
-     */
+    this.messageSender = this.getSenderName(this.message.sender);
+  }
 
-    // if (!contact) {
-    //   this.messageSender = this.message.sender;
-    // } else {
-    //   this.messageSender = contact.name;
-    // }
-
-    this.messageSender = contact?.name;
+  getSenderName(senderId: string): string {
+    // TODO: Fetch the contact's name from the ContactService
+    // and return it.
+    // This is a placeholder implementation.
+    // Replace with actual code when it is resolved.
+    // ISSUE: `contacts` is getting reset when router outlets change;
+    // therefore, contact.name is `undefined` (hence the 'Unknown Sender').
+    return this.contactService.getContact(senderId)?.name || 'Unknown Sender';
   }
 }

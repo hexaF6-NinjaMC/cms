@@ -14,11 +14,11 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
   styleUrl: './contact-edit.component.css',
 })
 export class ContactEditComponent implements OnInit {
-  originalContact!: Contact;
+  originalContact!: Contact | null;
   contact: Contact | undefined;
   groupContacts: Contact[] = [];
   editMode: boolean = false;
-  id!: string;
+  _id!: string;
   emailPattern: RegExp =
     /[a-z0-9](?:(?!.*[.]{2,}))[a-z0-9_!#$%&'*+/=?^`{|}~.-]*?[a-z0-9_!#$%&'*+/=?^`{|}~]*?(?:(?<!\.))(?!\.)@[a-z0-9]+[a-z0-9]*(?:[-a-z0-9.]*?)\.[a-z]{2,}/;
   phonePattern: RegExp = /([2-9]\d{2})(-?)([2-9]\d{2})(-?)(\d{4})/;
@@ -31,12 +31,12 @@ export class ContactEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.id = params['id'] as string;
-      if (this.id === undefined || this.id === null) {
+      this._id = params['id'] as string;
+      if (this._id === undefined || this._id === null) {
         this.editMode = false;
         return;
       }
-      this.originalContact = this.contactService.getContact(this.id) as Contact;
+      this.originalContact = this.contactService.getContact(this._id);
       if (this.originalContact === undefined || this.originalContact === null) {
         return;
       }
@@ -44,8 +44,11 @@ export class ContactEditComponent implements OnInit {
       this.contact = JSON.parse(
         JSON.stringify(this.originalContact),
       ) as Contact;
-      if (this.originalContact.group !== null) {
-        this.groupContacts = this.contact.group as Contact[];
+      if (
+        this.originalContact.group !== null &&
+        this.originalContact.group !== undefined
+      ) {
+        this.groupContacts = this.contact.group!;
       }
     });
   }
@@ -53,7 +56,6 @@ export class ContactEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     const value = form.value;
     const newContact = new Contact(
-      this.id,
       value.name,
       value.email,
       value.phone,
@@ -61,7 +63,7 @@ export class ContactEditComponent implements OnInit {
       this.groupContacts,
     );
     if (this.editMode) {
-      this.contactService.updateContact(this.originalContact, newContact);
+      this.contactService.updateContact(this.originalContact!, newContact);
     } else {
       this.contactService.addContact(newContact);
     }
@@ -81,9 +83,9 @@ export class ContactEditComponent implements OnInit {
 
   isInvalidContact(newContact: Contact) {
     if (!newContact) return true;
-    if (this.contact && newContact.id === this.contact.id) return true;
+    if (this.contact && newContact._id === this.contact._id) return true;
     return this.groupContacts.some((c) =>
-      newContact ? newContact.id === c.id : false,
+      newContact ? newContact._id === c._id : false,
     );
   }
 

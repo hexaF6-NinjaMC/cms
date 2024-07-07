@@ -12,13 +12,7 @@ export class ContactsFilterPipe implements PipeTransform {
         filteredContacts.push(contact);
       }
     });
-    // if (term && term.trim().length > 0) {
-    //   contacts
-    //     .filter((contact) =>
-    //       contact.name.toLowerCase().includes(term.toLowerCase()),
-    //     )
-    //     .forEach((contact) => filteredContacts.push(contact));
-    // }
+
     return filteredContacts.length > 0 ? filteredContacts : contacts;
   }
 }

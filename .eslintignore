@@ -3,3 +3,7 @@ dist
 assets
 *.js
 *.spec.ts
+MOCKDOCUMENTS.ts
+MOCKDOCUMENTS-2.ts
+MOCKCONTACTS.ts
+MOCKMESSAGES.ts

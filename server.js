@@ -10,6 +10,11 @@ import router from "./server/routes/app.js";
 import contactsRouter from "./server/routes/contacts.js";
 import documentsRouter from "./server/routes/documents.js";
 import messagesRouter from "./server/routes/messages.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,16 +59,25 @@ app.use(express.static(path.join(__dirname, "dist/cms/browser")));
 
 // Tell express to map the default route ('/') to the index route
 app.use("/", index);
+
+// ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
 app.use("/contacts", contactRoutes);
 app.use("/documents", documentRoutes);
 app.use("/messages", messageRoutes);
-
-// ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
 
 // Tell express to map all other non-defined routes back to the index page
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/cms/browser/index.html"));
 });
+
+mongoose
+  .connect(process.env.MONGO_DB_URI)
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch((err) => {
+    console.error("Connection to database failed:", err);
+  });
 
 // Define the port address and tell express to use this port
 const port = process.env.PORT || "3000";
