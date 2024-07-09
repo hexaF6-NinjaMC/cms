@@ -1,6 +1,6 @@
 export class Document {
   public _id?: string;
-  public id!: string;
+  public id?: string;
 
   constructor(
     public name: string,

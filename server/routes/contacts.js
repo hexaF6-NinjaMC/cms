@@ -1,8 +1,6 @@
 import express from "express";
-import sequenceGenerator from "./sequenceGenerator.js";
 import contactModel from "../models/contact.js";
 
-const seqGen = sequenceGenerator;
 const conModel = contactModel;
 
 const contactsRouter = express.Router();
@@ -28,10 +26,7 @@ contactsRouter.get("/", (req, res) => {
 
 // POST a new contact
 contactsRouter.post("/", (req, res) => {
-  const maxContactId = seqGen.nextId("contacts");
-
   const contact = new conModel({
-    id: maxContactId,
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,

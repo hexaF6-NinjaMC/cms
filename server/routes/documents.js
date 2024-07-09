@@ -26,12 +26,7 @@ documentsRouter.get("/", (req, res) => {
 
 // POST a new document
 documentsRouter.post("/", (req, res) => {
-  const maxDocumentId = seqGen.nextId("documents");
-  console.log("New document ID:", maxDocumentId);
-  console.log("New document ID type:", typeof maxDocumentId);
-
   const document = new docModel({
-    _id: maxDocumentId,
     name: req.body.name,
     description: req.body.description,
     url: req.body.url,
