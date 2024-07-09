@@ -27,7 +27,7 @@ export class MessageEditComponent implements OnInit {
     const newMessage: Message = new Message(
       subject,
       message,
-      '935f28ed-10d1-4d36-98e2-dbadfb062e79',
+      '68589326-5bf1-4348-8cc4-2fde7a9caae9',
     );
     console.log(newMessage);
     this.messageService.addMessage(newMessage);

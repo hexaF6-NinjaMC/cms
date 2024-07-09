@@ -14,7 +14,7 @@ export class DocumentService {
   documentSelectedEvent = new EventEmitter<Document>();
   documentListChangedEvent = new Subject<Document[]>();
 
-  private documentsUrl = 'http://localhost:3000/documents';
+  private documentsUrl = '/api/documents';
   private documents: Document[] = [];
 
   constructor(private http: HttpClient) {}

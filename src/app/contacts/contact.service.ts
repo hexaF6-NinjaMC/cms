@@ -15,7 +15,7 @@ export class ContactService {
   contactListChangedEvent = new Subject<Contact[]>();
 
   private contacts: Contact[] = [];
-  private contactsUrl = 'http://localhost:3000/contacts';
+  private contactsUrl = '/api/contacts';
 
   constructor(private http: HttpClient) {}
 

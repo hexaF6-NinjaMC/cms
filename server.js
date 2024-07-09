@@ -61,9 +61,9 @@ app.use(express.static(path.join(__dirname, "dist/cms/browser")));
 app.use("/", index);
 
 // ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
-app.use("/contacts", contactRoutes);
-app.use("/documents", documentRoutes);
-app.use("/messages", messageRoutes);
+app.use("/api/contacts", contactRoutes);
+app.use("/api/documents", documentRoutes);
+app.use("/api/messages", messageRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get("*", (req, res) => {
@@ -87,6 +87,10 @@ app.set("port", port);
 const server = http.createServer(app);
 
 // Tell the server to start listening on the provided port
-server.listen(port, function () {
-  console.log("API running on: http://localhost:" + port + "/");
+server.listen(port, () => {
+  if (process.env.ENVIRONMENT === "development") {
+    console.log("API running on: http://localhost:" + port + "/");
+  } else {
+    console.log(`API running on: https://${process.env.DOMAIN}/`);
+  }
 });

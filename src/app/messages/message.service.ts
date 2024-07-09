@@ -14,7 +14,7 @@ export class MessageService {
   messageChangedEvent = new Subject<Message[]>();
 
   private messages: Message[] = [];
-  private messagesUrl = 'http://localhost:3000/messages';
+  private messagesUrl = '/api/messages';
 
   constructor(private http: HttpClient) {}
 

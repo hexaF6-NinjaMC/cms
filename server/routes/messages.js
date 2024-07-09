@@ -1,8 +1,6 @@
 import express from "express";
-import sequenceGenerator from "./sequenceGenerator.js";
 import messageModel from "../models/message.js";
 
-const seqGen = sequenceGenerator;
 const msgModel = messageModel;
 
 const messagesRouter = express.Router();
@@ -27,10 +25,7 @@ messagesRouter.get("/", (req, res) => {
 
 // POST a new message
 messagesRouter.post("/", (req, res) => {
-  const maxMessageId = seqGen.nextId("messages");
-
   const msg = new msgModel({
-    id: maxMessageId,
     subject: req.body.subject,
     msgText: req.body.msgText,
     sender: req.body.sender,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { Message } from '../message.model';
 import { ContactService } from '../../contacts/contact.service';
 
@@ -7,14 +7,14 @@ import { ContactService } from '../../contacts/contact.service';
   templateUrl: './message-item.component.html',
   styleUrl: './message-item.component.css',
 })
-export class MessageItemComponent implements OnInit {
+export class MessageItemComponent implements AfterViewInit {
   @Input() message!: Message;
 
   messageSender?: string;
 
   constructor(private contactService: ContactService) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.messageSender = this.getSenderName(this.message.sender);
   }
 
