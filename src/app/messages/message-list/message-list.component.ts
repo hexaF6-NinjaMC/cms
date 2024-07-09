@@ -30,7 +30,7 @@ export class MessageListComponent implements OnInit, AfterViewInit {
     this.contactService.getContacts();
     setTimeout(() => {
       this.messageService.getMessages();
-    }, 100);
+    }, 200);
     this.messageService.messageChangedEvent.subscribe((messages: Message[]) => {
       this.messages = messages;
     });
@@ -47,6 +47,6 @@ export class MessageListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.messageService.scrollToLast();
-    }, 200);
+    }, 400);
   }
 }
